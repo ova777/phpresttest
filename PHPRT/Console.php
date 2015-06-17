@@ -28,4 +28,13 @@ class Console {
 		if(is_array($data)) print_r($data);
 		else echo $data.PHP_EOL;
 	}
+
+	/**
+	 * Выводит данные о версии приложения
+	 */
+	public static function version() {
+		self::log('PHPRestTest '.PHPRT::VERSION);
+		self::log('https://github.com/ova777/phpresttest');
+		self::log('');
+	}
 }

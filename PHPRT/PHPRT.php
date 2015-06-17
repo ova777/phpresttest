@@ -1,6 +1,8 @@
 <?php
 
 class PHPRT {
+	const VERSION = '1.0.0.1';
+	
 	private $config = [];
 	private $scenarios = [];
 	private $scenariosPath = './scenarios';
@@ -43,6 +45,8 @@ class PHPRT {
 	 * @param array $args аргументы командной строки
 	 */
 	public function start($args) {
+		Console::version();
+		
 		$this->parseArgs($args);
 		$this->readConfig();
 		$this->readScenariosList();
@@ -206,6 +210,8 @@ class PHPRT {
 		array_shift($args);
 		
 		while(null !== $arg = array_shift($args)) {
+			if($arg == '-v') { exit; }
+			
 			if(isset(self::$args[$arg])) {
 				$this->{self::$args[$arg]} = array_shift($args);
 			} else {

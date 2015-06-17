@@ -163,7 +163,7 @@ class Response {
 	public static function checkHttpStatus($headers, $status) {
 		$head = trim(array_shift(explode("\r\n", $headers)));
 		$parts = explode(' ', $head);
-		if(sizeof($parts) < 3) Console::error(I18n::gettext('Некорректный HTTP статус').': '.$head);
+		if(sizeof($parts) < 2) Console::error(I18n::gettext('Некорректный HTTP статус').': '.$head);
 		$h = [ array_shift($parts), array_shift($parts), implode(' ', $parts) ];
 		
 		if(is_array($status)) $status = implode(' ', $status);
